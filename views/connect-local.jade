@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  .container
+    .col-sm-6.col-sm-offset-3
+      h1
+        span.fa.fa-user
+        |  Add Local Account
+
+      // show any messages that come back with authentication
+      if message.length
+        .alert.alert-danger= message
+
+      // sign up form
+      form(action='/connect/local', method='post')
+        .form-group
+          label Email
+          p= user.email
+          input.form-control(type='hidden', name='email' value='#{user.email}')
+        .form-group
+          label Password
+          input.form-control(type='password', name='password')
+        button.btn.btn-warning.btn-lg(type='submit') Add Local
+
+      hr
+
+      p: a(href='/profile') Go back to profile

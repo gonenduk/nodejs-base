@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  .container
+    .jumbotron.text-center
+      h1: span.fa.fa-lock  Base node.js
+
+      if (!user)
+        p Log in or Sign up with:
+
+        a.btn.btn-default(href='/login'): span.fa.fa-user  Local Login
+        | &nbsp;
+        a.btn.btn-default(href='/signup'): span.fa.fa-user  Local Signup
+        | &nbsp;
+        a.btn.btn-primary(href='/auth/facebook'): span.fa.fa-facebook  Facebook
+
+      else
+        p Welcome Back #{user.name}!
+        a.btn.btn-danger.btn-sm(href='/profile') Profile
+        | &nbsp;
+        a.btn.btn-danger.btn-sm(href='/logout') Log out

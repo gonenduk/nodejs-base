@@ -1,0 +1,64 @@
+extends layout
+
+block content
+  .container
+    .page-header.text-center
+      h1
+        span.fa.fa-anchor
+        |  Profile Page
+      a.btn.btn-danger.btn-sm(href='/logout') Log out
+      | &nbsp;
+      a.btn.btn-danger.btn-sm(href='/') Home
+
+    .row
+      // Local Information
+      .col-sm-6
+        .well
+          h3
+            span.fa.fa-user
+            |  Local
+
+          img(src='#{user.profilePicture}', width='250px')
+
+          p
+            strong id
+            |: #{user._id}<br>
+            strong email
+            |: #{user.email}<br>
+            strong username
+            |: #{user.username}<br>
+            strong name
+            |: #{user.name}<br>
+            strong locale
+            |: #{user.locale}<br>
+            strong pictures
+            |: #{user.pictures}<br>
+            strong password
+            |: #{user.local.password}<br>
+
+          if (user.local.password)
+            a.btn.btn-default(href='/unlink/local') Unlink
+          else
+            a.btn.btn-default(href='/connect/local') Connect Local
+          | &nbsp;
+          a.btn.btn-default(href='/upload') Add Picture
+          | &nbsp;
+          a.btn.btn-default(href='/delete-pictures') Delete Pictures
+
+      // Facebook Information
+      .col-sm-6
+        .well
+          h3.text-primary
+            span.fa.fa-facebook
+            |  Facebook
+
+          // Check if the user has facebook token
+          if (user.facebook.token)
+            p
+              strong id
+              | : #{user.facebook.id}<br>
+              strong token
+              | : #{user.facebook.token}<br>
+            a.btn.btn-primary(href='/unlink/facebook') Unlink
+          else
+            a.btn.btn-primary(href='/connect/facebook') Connect Facebook
