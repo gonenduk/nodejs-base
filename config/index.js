@@ -20,6 +20,13 @@ var config = {
       default: 'en'     // English
     },
 
+    smtp: {
+      service: 'Gmail',       // available services @ https://github.com/andris9/nodemailer-wellknown#supported-services
+      name: 'Display Name',
+      username: 'username@gmail.com',
+      password: ''
+    },
+
     auth: {
       masterPassword: '12345',
 
@@ -71,6 +78,13 @@ var config = {
       default: 'en'     // English
     },
 
+    smtp: {
+      service: 'Gmail',       // available services @ https://github.com/andris9/nodemailer-wellknown#supported-services
+      name: 'Display Name',
+      username: 'username@gmail.com',
+      password: ''
+    },
+
     auth: {
       masterPassword: '12345',
 
@@ -120,6 +134,13 @@ var config = {
 
     locale: {
       default: 'en'     // English
+    },
+
+    smtp: {
+      service: 'Gmail',       // available services @ https://github.com/andris9/nodemailer-wellknown#supported-services
+      name: 'Display Name',
+      username: 'username@gmail.com',
+      password: ''
     },
 
     auth: {
