@@ -5,7 +5,7 @@ var config = {
   development: {
 
     server: {
-      hostname: 'http://www.gay-ville.com',  // host to be used when accessing resources from outside
+      hostname: 'http://www.server.com',  // host to be used when accessing resources from outside
       port: 3000
     },
 
