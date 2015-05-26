@@ -5,6 +5,7 @@ var config = {
   development: {
 
     server: {
+      hostname: 'http://www.gay-ville.com',  // host to be used when accessing resources from outside
       port: 3000
     },
 
@@ -63,6 +64,7 @@ var config = {
   production: {
 
     server: {
+      hostname: 'http://server.com',  // host to be used when accessing resources from outside
       port: 80
     },
 
@@ -121,6 +123,7 @@ var config = {
   staging: {
 
     server: {
+      hostname: 'http://server.com',  // host to be used when accessing resources from outside
       port: 80
     },
 

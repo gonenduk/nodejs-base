@@ -1,3 +1,4 @@
+var app = require('../app');
 var debug = require('debug')('nodejs-base:mail');
 var config = require('../config');
 var nodemailer = require('nodemailer');
@@ -11,19 +12,31 @@ var transporter = nodemailer.createTransport({
   }
 });
 
-// Send email. wwww.nodemailer.com for details on fields in data
-// if template exists will render it and place in data.html
-module.exports.sendMail = function (data, template) {
+// Send email. wwww.nodemailer.com for details on fields in mailOptions
+// data is the data used by the template
+// if no template given use the general one
+module.exports.sendMail = function (mailOptions, data, template) {
+
+  // url for accessing header and footer images in template
+  data.hostname = config.server.hostname;
 
   // render template to html. use general template as default
   template = template || 'general';
+  app.render('emails/' + template, data, function (err, html){
+    // exit om error
+    if (err) {
+      console.log(err);
+      return err;
+    }
+    // update html
+    mailOptions.html = html;
+    // send from user used to connect to SMTP server
+    mailOptions.from = config.smtp.name + '<' + config.smtp.username + '>';
 
-  // send from user used to connect to SMTP server
-  data.from = config.smtp.name + '<' + config.smtp.username + '>';
-
-  // send the email
-  transporter.sendMail(data, function(error, info){
-    if (error) console.log(error);
-    else debug('Message sent: ' + info.response);
+    // send the email
+    transporter.sendMail(mailOptions, function(error, info){
+      if (error) console.log(error);
+      else debug('Message sent: ' + info.response);
+    });
   });
 };
