@@ -2,13 +2,13 @@ doctype html
 html
   head
     meta(http-equiv='Content-Type', content='text/html; charset=utf-8')
-    title Node.js Base Mail
 
   body(bgcolor='#FFFFFF', leftmargin='0', topmargin='0', marginwidth='0', marginheight='0', style='font-family:Arial;')
     table(width='750', border='0', cellpadding='0', cellspacing='0')
       tr
         td(colspan='5')
-          img(src='#{hostname}/images/mail_header.jpg', width='750', height='285')
+          //- Replace link to server
+          img(src='www.server.com/images/mail_header.jpg', width='750', height='285', style='vertical-align:middle;')
 
       tr
         td(width='64', bgcolor='#F3F3F3')
@@ -19,12 +19,12 @@ html
             | Thanks,
             br
             | The Node.js Base Team
-
         td(width='20', bgcolor='#FFFFFF')
         td(width='48', bgcolor='#F3F3F3')
 
       tr
         td(colspan='5')
-          img(src='#{hostname}/images/mail_footer.jpg', width='750', height='176')
+          //- Replace link to server
+          img(src='www.server.com/images/mail_footer.jpg', width='750', height='176', style='vertical-align:middle;')
 
     block footer

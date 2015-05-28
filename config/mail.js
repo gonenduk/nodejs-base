@@ -17,9 +17,6 @@ var transporter = nodemailer.createTransport({
 // if no template given use the general one
 module.exports.sendMail = function (mailOptions, data, template) {
 
-  // url for accessing header and footer images in template
-  data.hostname = config.server.hostname;
-
   // render template to html. use general template as default
   template = template || 'general';
   app.render('emails/' + template, data, function (err, html){
