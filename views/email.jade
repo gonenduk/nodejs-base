@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  .container
+    .col-sm-6.col-sm-offset-3
+      h1
+        span.fa.fa-sign-in
+        |  Email
+
+      // show any messages that come back
+      if sent
+        .alert.alert-danger Email successfully sent!
+
+      // email form
+      form(action='/email', method='post')
+        .form-group
+          label Email to
+          input.form-control(type='text', name='email', value='#{user.email}')
+        .form-group
+          label Subject
+          input.form-control(type='text', name='subject')
+        .form-group
+          label Message
+          textarea.form-control(rows='5', name='message')
+        button.btn.btn-warning.btn-lg(type='send') Send
+
+      hr
+
+      p Go back to
+        a(href='/profile')  Profile
+      | .

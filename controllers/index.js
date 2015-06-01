@@ -5,6 +5,7 @@ var express = require('express');
 var router = express.Router();
 var multer = require('multer');
 var config = require('../config');
+var mail = require('../config/mail');
 
 /**
 * User authentication checks for routes
@@ -175,6 +176,20 @@ module.exports = function (passport) {
     req.user.save();
 
     res.redirect('/profile');
+  });
+
+  // email page
+  router.get('/email', isUser, function (req, res, next) {
+    var sent = req.query.sent;
+    console.log(sent);
+    res.render('email', {user: req.user, sent: sent});
+  });
+
+  // email process
+  router.post('/email', isUser, function (req, res, next) {
+    var msg = req.body.message.replace('\n', '<br>');
+    mail.sendMail({to: req.body.email, subject: req.body.subject}, {text: msg});
+    res.redirect('/email?sent=true');
   });
 
   // export the router object
